@@ -28,7 +28,7 @@ class Extract {
 		}
 	}
 
-	public function getTemplate($row) {
+	public function getPageTemplate($row) {
 		$output = "";
 		if(!empty($this->array[$row])) {
 
@@ -75,6 +75,33 @@ $output = '
 			$output = $this->array[$row][0];
 		}
 
+		return $output;
+	}
+
+
+	public function getSitemapTemplate() {
+		$output = "";
+		if(!empty($this->array)) {
+
+			$output = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://www.tiger.co.uk/</loc>
+		<changefreq>monthly</changefreq>
+		<priority>1.0</priority>
+	</url>';
+			foreach ($this->array as $key => $value) {
+
+				$output .= '
+	<url>
+		<loc>' . $value[0] . '</loc>
+		<changefreq>yearly</changefreq>
+	</url>';
+
+			}
+			$output .= '
+</urlset>';
+		}
 		return $output;
 	}
 }

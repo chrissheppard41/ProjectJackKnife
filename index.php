@@ -16,9 +16,11 @@ foreach($Extract->getAllColumns() as $key => $files) {
 		continue;
 	}
 
-	Output::print_file(str_replace("http://www.tiger.co.uk","", $files[0]), "index.html", $Extract->getTemplate($key));
+	Output::print_file(str_replace("http://www.tiger.co.uk","", $files[0]), "index.html", $Extract->getPageTemplate($key));
 
 }
+
+Output::print_file("/", "sitemap.xml", $Extract->getSitemapTemplate());
 
 ?>
 	</body>
