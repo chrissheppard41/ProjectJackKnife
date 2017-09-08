@@ -92,6 +92,10 @@ $output = '
 	</url>';
 			foreach ($this->array as $key => $value) {
 
+				if($key == 0) {
+					continue;
+				}
+
 				$output .= '
 	<url>
 		<loc>' . $value[0] . '</loc>
